@@ -6,3 +6,10 @@ sky:
     database: LiuProject
     username: root
     password: 12345678
+
+
+  alioss:
+    endpoint:
+    access-key-id:
+    access-key-secret:
+    bucket-name:
