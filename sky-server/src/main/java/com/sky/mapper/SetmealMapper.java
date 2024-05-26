@@ -23,4 +23,7 @@ public interface SetmealMapper {
      * @return
      */
     List<Setmeal> list(Setmeal setmeal);
+
+    @Select("select * from setmeal where id=#{id}")
+    Setmeal getById(Long setmealId);
 }
