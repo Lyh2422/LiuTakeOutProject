@@ -22,12 +22,12 @@ public interface OrderMapper {
 
     /**
      * 根据订单状态和下单时间查询订单
-     * @param pendingPayment
+     * @param status
      * @param time
      * @return
      */
     @Select("select * from orders where status=#{status} and order_time <#{orderTime}")
-    List<Orders> getByStatusAndOrderTimeLT(Integer pendingPayment, LocalDateTime time);
+    List<Orders> getByStatusAndOrderTimeLT(Integer status, LocalDateTime time);
 
     /**
      * 根据订单号和用户id查询订单
@@ -73,4 +73,11 @@ public interface OrderMapper {
      * @return
      */
     Double sumByMap(Map map);
+
+    /**
+     * 根据动态条件统计订单数量
+     * @param map
+     * @return
+     */
+    Integer countByMap(Map map);
 }
