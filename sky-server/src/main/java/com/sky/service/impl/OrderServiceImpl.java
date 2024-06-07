@@ -213,7 +213,7 @@ public class OrderServiceImpl implements OrderService {
 
         List<Orders> list=new ArrayList();
 
-        //查询出订单明细，并封装如OrderVO进行相应
+        //查询出订单明细，并封装如OrderVO进行响应
         if(page !=null &&page.getTotal()>0){
             for(Orders orders:page){
                 Long orderId=orders.getId();//订单id
@@ -230,6 +230,10 @@ public class OrderServiceImpl implements OrderService {
         return new PageResult(page.getTotal(),list);
     }
 
+    /**
+     * 用户通过id取消订单
+     * @param id
+     */
     @Override
     public void userCancelById(Long id) {
         //根据id查询订单
@@ -269,7 +273,7 @@ public class OrderServiceImpl implements OrderService {
             //查询当前用户id
             Long userId=BaseContext.getCurrentId();
 
-            //根据订单查询当前订单详情
+            //根据订单id查询当前订单详情
             List<OrderDetail> orderDetailList=orderDetailMapper.getByOrderId(id);
 
             //将订单详情对象转换为购物车对象
@@ -392,6 +396,10 @@ public class OrderServiceImpl implements OrderService {
         orderMapper.update(orders);
     }
 
+    /**
+     * 拒单
+     * @param ordersRejectionDTO
+     */
     @Override
     public void rejection(OrdersRejectionDTO ordersRejectionDTO) {
         //根据id查询订单
